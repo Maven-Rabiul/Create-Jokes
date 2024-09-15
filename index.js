@@ -1,1 +1,19 @@
-console.log('Thank you for using WebStorm 💙')
+
+
+function getJoke (){
+let config = {
+    headers:{
+        'Accept': 'application/json'
+    }
+}
+axios.get("https://icanhazdadjoke.com", config).then((res) => {
+    console.log(res.data.joke);
+    document.getElementById("joke").innerHTML=res.data.joke
+}).catch((err) => {
+    console.log(err)
+    document.getElementById("joke").innerHTML=err.message;
+})
+
+}
+
+window.onload = getJoke
